@@ -26,6 +26,23 @@ static uint8_t nr_of_throws[NR_OF_DICE_VALUES + 1] = {0};
 /* function definitions */
 
 /// STUDENTS: To be programmed
+void statistics_add_throw(uint8_t throw_value)
+{
+    /* only count valid dice values */
+    if ((throw_value >= 1u) && (throw_value <= NR_OF_DICE_VALUES)) {
+        nr_of_throws[0]++;               /* total */
+        nr_of_throws[throw_value]++;     /* per value */
+    }
+}
+
+uint8_t statistics_read(uint8_t dice_number)
+{
+    if (dice_number <= NR_OF_DICE_VALUES) {
+        return nr_of_throws[dice_number];
+    }
+
+    return ERROR_VALUE;
+}
 
 
 
